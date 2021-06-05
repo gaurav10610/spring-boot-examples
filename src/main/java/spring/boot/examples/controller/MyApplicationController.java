@@ -18,7 +18,7 @@ import spring.boot.examples.domain.Welcome;
 import spring.boot.examples.service.WelcomeService;
 
 @RestController
-@RequestMapping(path = "app/")
+@RequestMapping(path = "/spring/app")
 public class MyApplicationController {
 
   private static final Logger logger = LoggerFactory.getLogger(MyApplicationController.class);
@@ -26,21 +26,20 @@ public class MyApplicationController {
   @Autowired
   WelcomeService welcomeService;
 
-  @GetMapping(path = "welcome/{owner}")
-  public Welcome getWelcome(@PathVariable String owner) throws InterruptedException {
-    logger.info("info: request received for {}", "getWelcome");
+  @GetMapping(path = "/welcome/{owner}")
+  public Welcome getWelcome(@PathVariable String owner) {
+    logger.info("request received for {} api with owner {}", "getWelcome", owner);
     return welcomeService.getWelcomeText(owner);
   }
 
-  @GetMapping(path = "users")
+  @GetMapping(path = "/users")
   public String getAllUsers() {
     ResponseEntity<String> entity = null;
-    RestTemplate template = new RestTemplate();
     HttpHeaders headers = new HttpHeaders();
     headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
     HttpEntity<String> httpEntity = new HttpEntity<String>("parameters", headers);
 
-    entity = template.exchange("http://theinstashare.com/instashare/users/active/users",
+    entity = new RestTemplate().exchange("http://theinstashare.com/instashare/users/active/users",
         HttpMethod.GET, httpEntity, String.class);
     return entity.getBody();
   }
