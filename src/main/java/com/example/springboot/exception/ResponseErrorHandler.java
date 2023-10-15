@@ -31,8 +31,13 @@ public class ResponseErrorHandler extends ResponseEntityExceptionHandler {
 			errors.add(error.getObjectName() + ": " + error.getDefaultMessage());
 		}
 
-		ApiError apiError = ApiError.builder().status(HttpStatus.UNPROCESSABLE_ENTITY).message("Validation Exception")
-				.errors(errors).errorCode(ErrorConstants.FIELD_VALIDATION_ERROR).build();
+		ApiError apiError = ApiError.builder()
+			.status(HttpStatus.UNPROCESSABLE_ENTITY)
+			.message("Validation Exception")
+			.errors(errors)
+			.errorCode(ErrorConstants.FIELD_VALIDATION_ERROR)
+			.build();
 		return handleExceptionInternal(ex, apiError, headers, apiError.getStatus(), request);
 	}
+
 }

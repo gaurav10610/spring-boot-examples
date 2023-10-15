@@ -7,17 +7,18 @@ import org.springframework.stereotype.Service;
 
 import com.example.springboot.domain.request.EmployeeRequest;
 import com.example.springboot.domain.response.EmployeeDto;
+import com.example.springboot.domain.response.EmployeeListDto;
 import com.example.springboot.service.MainService;
 
 @Service
 public class MainServiceImpl implements MainService {
 
 	@Override
-	public List<EmployeeDto> getAllEmployees() {
+	public EmployeeListDto getAllEmployees() {
 		List<EmployeeDto> list = new ArrayList<EmployeeDto>();
 		list.add(EmployeeDto.builder().id(123).name("Gaurav").city("Mathura").build());
 		list.add(EmployeeDto.builder().id(121).name("Shikha").city("Agra").build());
-		return list;
+		return EmployeeListDto.builder().list(list).build();
 	}
 
 	@Override

@@ -1,12 +1,13 @@
 package com.example.springboot.service;
 
-import java.util.List;
-
 import com.example.springboot.domain.request.EmployeeRequest;
 import com.example.springboot.domain.response.EmployeeDto;
+import com.example.springboot.domain.response.EmployeeListDto;
 
 public interface MainService {
-	public List<EmployeeDto> getAllEmployees();
-	
+
+	public EmployeeListDto getAllEmployees();
+
 	public EmployeeDto updateEmployee(Integer id, EmployeeRequest request);
+
 }

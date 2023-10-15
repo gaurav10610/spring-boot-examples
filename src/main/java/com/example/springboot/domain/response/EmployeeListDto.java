@@ -1,16 +1,14 @@
 package com.example.springboot.domain.response;
 
+import java.util.List;
+
 import lombok.Builder;
 import lombok.Data;
 
-@Builder
 @Data
-public class EmployeeDto {
+@Builder
+public class EmployeeListDto {
 
-	private Integer id;
-
-	private String name;
-
-	private String city;
+	private List<EmployeeDto> list;
 
 }

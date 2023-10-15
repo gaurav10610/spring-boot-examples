@@ -13,8 +13,12 @@ import lombok.Data;
 @Data
 public class ApiError {
 
-    private HttpStatus status;
-    private String message;
-    private List<String> errors;
-    private String errorCode;
+	private HttpStatus status;
+
+	private String message;
+
+	private List<String> errors;
+
+	private String errorCode;
+
 }
