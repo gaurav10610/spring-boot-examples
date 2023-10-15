@@ -4,7 +4,7 @@ import com.example.springboot.domain.request.EmployeeRequest;
 import com.example.springboot.domain.response.EmployeeDto;
 import com.example.springboot.domain.response.EmployeeListDto;
 
-public interface MainService {
+public interface EmployeeService {
 
 	public EmployeeListDto getAllEmployees();
 

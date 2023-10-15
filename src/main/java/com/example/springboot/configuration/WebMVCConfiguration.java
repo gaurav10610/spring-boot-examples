@@ -4,7 +4,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
-import com.example.springboot.interceptor.RequestInterceptor;
+import com.example.springboot.interceptor.ApiRequestHandlerInterceptor;
+import com.example.springboot.interceptor.RequestContextInterceptor;
 
 import lombok.RequiredArgsConstructor;
 
@@ -12,10 +13,14 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class WebMVCConfiguration extends WebMvcConfigurationSupport {
 
-	private final RequestInterceptor requestInterceptor;
+	private final ApiRequestHandlerInterceptor apiRequestInterceptor;
+
+	private final RequestContextInterceptor requestContextInterceptor;
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(requestInterceptor);
+		registry.addInterceptor(requestContextInterceptor);
+		registry.addInterceptor(apiRequestInterceptor);
 	}
+
 }

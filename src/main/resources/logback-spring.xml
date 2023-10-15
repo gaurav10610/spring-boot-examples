@@ -10,7 +10,7 @@
 		class="ch.qos.logback.core.ConsoleAppender">
 		<layout class="ch.qos.logback.classic.PatternLayout">
 			<Pattern>
-				%white(%d{ISO8601}) %highlight(%-5level) %msg%n%throwable
+				%X{requestId} %white(%d{ISO8601}) %highlight(%-5level) %msg%n%throwable
 			</Pattern>
 		</layout>
 	</appender>
@@ -22,7 +22,7 @@
 		<encoder
 			class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
 			<Pattern>
-				{ "timestamp": "%d{ISO8601}", "logLevel": "%-5level", "thread": "%thread", "message": "%msg", "exception":"%throwable" }%n
+				{ "requestId": "%X{requestId}", "timestamp": "%d{ISO8601}", "logLevel": "%-5level", "thread": "%thread", "message": "%msg", "exception":"%throwable" }%n
 			</Pattern>
 		</encoder>
 

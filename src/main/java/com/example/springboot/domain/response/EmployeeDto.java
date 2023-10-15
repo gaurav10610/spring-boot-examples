@@ -13,4 +13,6 @@ public class EmployeeDto {
 
 	private String city;
 
+	private String country;
+
 }
