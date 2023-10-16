@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 import org.slf4j.MDC;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -15,7 +16,8 @@ import lombok.extern.slf4j.Slf4j;
 
 @Component
 @Slf4j
-public class WebRequestFilter extends OncePerRequestFilter {
+@Order(1)
+public class RequestIdFilter extends OncePerRequestFilter {
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
