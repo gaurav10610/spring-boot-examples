@@ -6,6 +6,9 @@ import lombok.Data;
 @Data
 @Builder
 public class SuccessResponseDto {
+
 	private Boolean isSuccess;
+
 	private String country;
+
 }
